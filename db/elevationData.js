@@ -46,7 +46,7 @@ function getDataLocation(Arr, callback) {
     Arr.forEach(element => {
         locationArr.push(element.Location);
     });
-    // console.log(locationArr);
+    console.log(locationArr);
     ElevationData.findAll({ where: { Location: locationArr } }).then(data => {
         // console.log(data);    
         callback(null,data);            

@@ -10,11 +10,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     objGet = {
         Location: req.body.Location,
-        Lattitude: req.body.Lattitude,
-        Longitude: req.body.Longitude,
+        DangerLattitude: req.body.Lattitude,
+        DangerLongitude: req.body.Longitude,
         TimeStamp: req.body.TimeStamp,
-        Area: req.body.Area,
-        AccuracyFactor:req.body.AccuracyFactor
+        WaterArea: req.body.Area,
+        CriticalFactor: req.body.CriticalFactor,
+        Alert:req.body.Alert
     }
     console.log(obj);
     obj.arr.push(objGet);
