@@ -16,8 +16,8 @@ router.post('/', (req, res) => {
         Area: req.body.Area,
         AccuracyFactor:req.body.AccuracyFactor
     }
-    console.log(objGet);
-    obj = objGet;
+    console.log(obj);
+    obj.arr.push(objGet);
     res.status(200).send("Data Added Successfully in DB" + obj); 
 });
 

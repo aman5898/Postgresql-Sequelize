@@ -1,4 +1,2 @@
-var obj={};
-module.exports = {
-    obj
-}
+// var obj = { arr: [] };
+module.exports = { arr: [] };
