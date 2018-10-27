@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var satelliteImages = require('./satelliteImages')
+
 var elevationImages = require('./elevationImages')
 var latestSatelliteImage = require('./latestSatelliteImage')
+var alert = require('./alert')
 
-router.use('/satelliteImages', satelliteImages);
+
+
 router.use('/elevationImages', elevationImages);
 router.use('/latestSatelliteImage', latestSatelliteImage);
+router.use('/alert',alert);
 
 module.exports = router;

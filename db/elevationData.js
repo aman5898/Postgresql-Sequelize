@@ -29,16 +29,29 @@ const ElevationData = db.define('ElevationData', {
     },
     Population: {
         type: Sequelize.DataTypes.FLOAT
-    }, 
+    },
     Area: {
         type: Sequelize.DataTypes.FLOAT
-    }, 
+    },
     Density: {
         type: Sequelize.DataTypes.FLOAT
     }
 })
 
 db.sync().then(() => console.log("Database Ready"))
+
+function getDataLocation(Arr, callback) {
+    // console.log(Arr);
+    var locationArr=[];
+    Arr.forEach(element => {
+        locationArr.push(element.Location);
+    });
+    // console.log(locationArr);
+    ElevationData.findAll({ where: { Location: locationArr } }).then(data => {
+        // console.log(data);    
+        callback(null,data);            
+    });    
+}
 
 function getData(callback) {
     arr = []
@@ -69,6 +82,7 @@ function InsertData(obj, callback) {
 
 module.exports = {
     getData,
-    InsertData
+    InsertData,
+    getDataLocation
 }
 
