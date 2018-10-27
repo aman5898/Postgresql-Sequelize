@@ -5,10 +5,9 @@ const db = new Sequelize('projectnoah', 'postgres', 'qwerty', {
 });
 
 const ElevationData = db.define('ElevationData', {
-    Id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
+    Location: {
+        type: Sequelize.TEXT,
+        primaryKey: true
     },
     Lattitude: {
         type: Sequelize.DataTypes.FLOAT,
@@ -22,36 +21,41 @@ const ElevationData = db.define('ElevationData', {
         type: Sequelize.DataTypes.FLOAT,
         allowNull: false
     },
-    ImageName: {
-        type: Sequelize.DataTypes.STRING(20),
-        allowNull: false
-    },
     SaferLattitude: {
         type: Sequelize.DataTypes.FLOAT
     },
     SaferLongitude: {
         type: Sequelize.DataTypes.FLOAT
     },
+    Population: {
+        type: Sequelize.DataTypes.FLOAT
+    }, 
+    Area: {
+        type: Sequelize.DataTypes.FLOAT
+    }, 
+    Density: {
+        type: Sequelize.DataTypes.FLOAT
+    }
 })
 
 db.sync().then(() => console.log("Database Ready"))
 
-function getData(callback){
-    arr=[]
+function getData(callback) {
+    arr = []
     ElevationData.all().then(data => {
         data.forEach(element => {
             // console.log(element.toJSON()); 
-            arr.push(element.toJSON())           
-        });        
+            arr.push(element.toJSON())
+        });
         // return arr;        
         //dont forget it to convert it to tojson before sending
-        callback(null,{data:arr});
+        callback(null, { data: arr });
     })
-   
+
     //data contains all the data as an array object
 }
 
-function InsertData(obj,callback) {
+function InsertData(obj, callback) {
     ElevationData.create(obj).then(data => {
         callback(null, data.toJSON())
         // console.log(data.toJSON());

@@ -10,10 +10,15 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     obj = {
+        Location: req.body.Location,
         Lattitude: req.body.Lattitude,
         Longitude: req.body.Longitude,
-        Resolution: req.body.Resolution,
-        ImageName: req.body.ImageName        
+        Resolution: req.body.Resolution, 
+        SaferLattitude: req.body.SaferLattitude,
+        SaferLongitude: req.body.SaferLongitude,
+        Population: req.body.Population,
+        Area: req.body.Area,
+        Density: req.body.Density         
     }
     console.log(obj);
     

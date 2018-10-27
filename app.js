@@ -18,6 +18,8 @@ app.use(bodyParser.urlencoded({
 app.use(router);
 app.use('/api', api);
 
+app.use('/', express.static(path.join(__dirname, 'public')))
+
 app.listen(5454, function () {
     console.log("Server started on http://localhost:5454");
 });

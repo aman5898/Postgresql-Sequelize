@@ -1,3 +1,4 @@
+// var $=require('jquery');
 aman = [{
     Location: 'Adur',
     Lat: 9.23767122834292,
@@ -976,36 +977,44 @@ aman = [{
     Population: 18358,
     Area: 11.12,
     Density: 1650.8992805755397
-},
-{
-    Location: '',
-    Lat: NaN,
-    Lng: NaN,
-    Res: NaN,
-    Dlat: NaN,
-    Dlng: NaN,
-    Population: NaN,
-    Area: NaN,
-    Density: NaN
 }];
 
 
-console.log(aman[0].Location);
-arr=[];
 
-for(var i=0;i<aman.length;i++){
-    obj={
-        Location:aman[i].Location,
-        Lat: aman[i].Lat-0,
-        Lng: aman[i].Lng-0,
-        Res: aman[i].Res-0,
-        Dlat: aman[i].Dlat-0,
-        Dlng: aman[i].Dlng-0,
-        Population: aman[i].Population-0,
-        Area: aman[i].Area-0,
-        Density: aman[i].Density-0,
+
+for (var i = 1; i < aman.length; i++) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:5454/api/elevationImages",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/x-www-form-urlencoded",
+            "cache-control": "no-cache",
+            "postman-token": "2650504d-7f82-b6ff-deae-12737acad500"
+        },
+        "data": {
+            "Lattitude": aman[i].Lat,
+            "Longitude": aman[i].Lng,
+            "Resolution": aman[i].Res,
+            "Location": aman[i].Location,
+            "SaferLattitude": aman[i].Dlat,
+            "SaferLongitude": aman[i].Dlng,
+            "Population": aman[i].Population,
+            "Area": aman[i].Area,
+            "Density": aman[i].Density
+        }
     }
-    arr.push(obj);
-}
-console.log(arr);
 
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
+// console.log(arr);
+
+
+    console.log("hello world");
+
+    
+
+    
